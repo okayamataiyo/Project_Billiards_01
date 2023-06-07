@@ -21,6 +21,8 @@ public:
 
 	//ƒ{[ƒ‹‚É—Í‚ğ‰Á‚¦‚é
 	void AddForce(XMVECTOR f);
+
+	XMFLOAT3 GetNextPosition() { return GetPosition() + velocity; }
 private:
 	int hModel;
 
