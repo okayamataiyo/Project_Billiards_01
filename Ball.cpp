@@ -41,7 +41,7 @@ void Ball::Update()
 	
 	//壁に反射する
 	XMFLOAT3 next = transform_.position_ + velocity;
-	if (next.x >= 30.0f)
+	if (next.x >= 35.0f)
 	{
 		XMVECTOR n = XMVectorSet(-1, 0, 0, 0);		//右の壁の法線(長さが1)
 		n = n * -1;									//逆向きにする=壁に向かうベクトル
@@ -59,29 +59,56 @@ void Ball::Update()
 //		velocity = XMLoadFloat3(&f);
 
 	}
-	if (next.x <= -30.0f)
+	if (next.x <= -35.0f)
 	{
-		XMFLOAT3 f;
-		XMStoreFloat3(&f, velocity);
-		f.x = f.x * -1;
+		XMVECTOR n = XMVectorSet(1, 0, 0, 0);		//左の壁の法線(長さが1)
+		n = n * -1;									//逆向きにする=壁に向かうベクトル
+		XMVECTOR ipvec = XMVector3Dot(velocity, n);	//壁を押す力の量
+		float ip = XMVectorGetX(ipvec);				//壁を押す力の大きさ
+		XMVECTOR push = n * ip;						//壁を押すベクトル
+		XMVECTOR th = velocity - push;				//壁に沿ってるベクトル
+		push *= -1;									//押し返されたベクトル
+		velocity = push + th;
+
+//		XMFLOAT3 f;
+//		XMStoreFloat3(&f, velocity);
+//		f.x = f.x * -1;
 		//fを加工して
-		velocity = XMLoadFloat3(&f);
+//		velocity = XMLoadFloat3(&f);
 	}
 	if (next.z >= 20.0f)
 	{
-		XMFLOAT3 f;
-		XMStoreFloat3(&f, velocity);
-		f.z = f.z * -1;
+		XMVECTOR n = XMVectorSet(0, 0, -1, 0);		//左の壁の法線(長さが1)
+		n = n * -1;									//逆向きにする=壁に向かうベクトル
+		XMVECTOR ipvec = XMVector3Dot(velocity, n);	//壁を押す力の量
+		float ip = XMVectorGetX(ipvec);				//壁を押す力の大きさ
+		XMVECTOR push = n * ip;						//壁を押すベクトル
+		XMVECTOR th = velocity - push;				//壁に沿ってるベクトル
+		push *= -1;									//押し返されたベクトル
+		velocity = push + th;
+
+//		XMFLOAT3 f;
+//		XMStoreFloat3(&f, velocity);
+//		f.z = f.z * -1;
 		//fを加工して
-		velocity = XMLoadFloat3(&f);
+//		velocity = XMLoadFloat3(&f);
 	}
 	if (next.z <= -20.0f)
 	{
-		XMFLOAT3 f;
-		XMStoreFloat3(&f, velocity);
-		f.z = f.z * -1;
+		XMVECTOR n = XMVectorSet(0, 0, 1, 0);		//左の壁の法線(長さが1)
+		n = n * -1;									//逆向きにする=壁に向かうベクトル
+		XMVECTOR ipvec = XMVector3Dot(velocity, n);	//壁を押す力の量
+		float ip = XMVectorGetX(ipvec);				//壁を押す力の大きさ
+		XMVECTOR push = n * ip;						//壁を押すベクトル
+		XMVECTOR th = velocity - push;				//壁に沿ってるベクトル
+		push *= -1;									//押し返されたベクトル
+		velocity = push + th;
+
+//		XMFLOAT3 f;
+//		XMStoreFloat3(&f, velocity);
+//		f.z = f.z * -1;
 		//fを加工して
-		velocity = XMLoadFloat3(&f);
+//		velocity = XMLoadFloat3(&f);
 	}
 	transform_.position_ += velocity;
 //	pos += velocity;
