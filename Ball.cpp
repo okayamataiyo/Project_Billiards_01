@@ -100,7 +100,9 @@ void Ball::SetNumber(int no)
 {
 	number = no;
 	hModel = Model::Load("DebugCollision/SphereCollider.fbx");
-	hModel = Model::Load("ƒtƒ@ƒCƒ‹–¼");
+	std::string s = "no";
+	s += std::to_string(number) + ".fbx";
+	hModel = Model::Load(s);
 	assert(hModel >= 0);
 }
 
