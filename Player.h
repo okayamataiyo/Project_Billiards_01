@@ -14,6 +14,8 @@ public:
 	//プレイヤーが操作する玉
 	void SetMyBall(Ball* ball) { myBall = ball; }
 private:
+	int hModel;
+
 	Ball* myBall;
 
 	//向き(Y回転の角度:ラジアン)
