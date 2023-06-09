@@ -68,7 +68,7 @@ void Player::Draw()
 	XMVECTOR v = XMVector3Transform(base, yrot);	//‚»‚Ì‰ñ“]‚ÅƒxƒNƒgƒ‹‚ÌŒü‚«‚ð•Ï‚¦‚é
 	transform_.position_ = myBall->GetPosition() + v;
 
-	hModel = Model::Load("no0.fbx");
+//	hModel = Model::Load("no0.fbx");
 	Model::SetTransform(hModel, transform_);
 	Model::Draw(hModel);
 }

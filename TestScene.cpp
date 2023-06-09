@@ -14,7 +14,6 @@ TestScene::TestScene(GameObject * parent)
 void TestScene::Initialize()
 {
 	Camera::SetPosition(XMFLOAT3(0, 50, 0));
-//	Camera::SetPosition()
 	Camera::SetTarget(XMFLOAT3(0, 0, 0));
 	for (int i = 0; i < 9; i++)
 	{
