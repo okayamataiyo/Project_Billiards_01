@@ -4,7 +4,7 @@
 //コンストラクタ
 PowerKage::PowerKage(GameObject* parent)
 	:GameObject(parent, "PowerKage"), hPictPowerKage_(-1), hPictPowerFlame_(-1),
-	maxPw_(180), nowPw_(30)
+	maxPw_(180), nowPw_(1)
 {
 
 }
@@ -42,7 +42,13 @@ void PowerKage::Draw()
 	Image::SetTransform(hPictPowerKage_, transkage);
 	Image::Draw(hPictPowerKage_);
 
-	Image::SetTransform(hPictPowerKage_, transkage);
-	Image::Draw(hPictPowerKage_);
+	Image::SetTransform(hPictPowerFlame_, transform_);
+	Image::Draw(hPictPowerFlame_);
+
+}
+
+//開放
+void PowerKage::Release()
+{
 
 }
