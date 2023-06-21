@@ -6,7 +6,7 @@
 
 Ball::Ball(GameObject* parent) : GameObject(parent, "Ball"), hModel(-1)
 {
-	velocity = XMVectorSet(0.1f, 0, 0.1f, 0);
+	velocity = XMVectorSet(0.0f, 0, 0.0f, 0);
 }
 
 Ball::~Ball()
