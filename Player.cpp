@@ -5,7 +5,7 @@
 #include "Engine/Model.h"
 
 /*
-* パワーケージを作成して、移動ボタンを押したら、カービィのかちわりメガトンパンチのような使用にする
+* パワーケージを作成して、ボタンを押したら、カービィのかちわりメガトンパンチのケージのような仕様にする
 */
 
 Player::Player(GameObject* parent)
@@ -14,7 +14,7 @@ Player::Player(GameObject* parent)
 	direction = 0.0f;
 	power = 0.1f;
 	hModel = Model::Load("DebugCollision/SphereCollider.fbx");
-	transform_.scale_ = XMFLOAT3(0.2, 0.2, 0.2);
+	transform_.scale_ = XMFLOAT3(0.2,0.2,0.2);
 }
 
 Player::~Player()
@@ -27,7 +27,6 @@ void Player::Update()
 	//PowerKageの力の増減
 	if (PowerKageFlug == 1) {
 		nowPw_++;
-
 	}
 	if (nowPw_ == maxPw_) {
 		PowerKageFlug = 2;
