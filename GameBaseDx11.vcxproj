@@ -150,6 +150,7 @@
     <ClCompile Include="Engine\Texture.cpp" />
     <ClCompile Include="Engine\Transform.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PowerKage.cpp" />
     <ClCompile Include="TestScene.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -179,6 +180,7 @@
     <ClInclude Include="Engine\Transform.h" />
     <ClInclude Include="Mover.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PowerKage.h" />
     <ClInclude Include="TestScene.h" />
   </ItemGroup>
   <ItemGroup>

@@ -3,6 +3,10 @@
 #include "Engine/Input.h"
 #include "Engine/Model.h"
 
+/*
+* パワーケージを作成して、移動ボタンを押したら、カービィのかちわりメガトンパンチのような使用にする
+*/
+
 Player::Player(GameObject* parent)
 {
 	direction = 0.0f;
