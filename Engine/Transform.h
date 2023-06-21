@@ -35,22 +35,22 @@ public:
 	XMMATRIX GetWorldMatrix();
 
 
-	static XMFLOAT3 Float3Add(XMFLOAT3 a, XMFLOAT3 b)
-	{
+	static XMFLOAT3 Float3Add(XMFLOAT3 a, XMFLOAT3 b){
+
 		return XMFLOAT3(a.x + b.x, a.y + b.y, a.z + b.z);
 	}
 };
 
-inline XMFLOAT3 operator +=(XMFLOAT3& p,const XMVECTOR& v)
-{
+inline XMFLOAT3 operator +=(XMFLOAT3& p,const XMVECTOR& v){
+
 	XMVECTOR pv = XMLoadFloat3(&p);
 	pv += v;
 	XMStoreFloat3(&p, pv);
 	return p;
 }
 
-inline XMFLOAT3 operator +(const XMFLOAT3& v1, const XMVECTOR& v2)
-{
+inline XMFLOAT3 operator +(const XMFLOAT3& v1, const XMVECTOR& v2){
+
 	XMVECTOR pv = XMLoadFloat3(&v1);
 	pv += v2;
 	XMFLOAT3 out;
@@ -58,8 +58,15 @@ inline XMFLOAT3 operator +(const XMFLOAT3& v1, const XMVECTOR& v2)
 	return out;
 }
 
-inline float Length(XMVECTOR v)
-{
+inline float Length(XMVECTOR v){
+
 	XMVECTOR lenVec = XMVector3Length(v);
 	return XMVectorGetX(lenVec);
+}
+
+inline XMVECTOR operator - (const XMFLOAT3& p1, const XMFLOAT3& p2) {
+
+	XMVECTOR p1v = XMLoadFloat3(&p1);
+	XMVECTOR p2v = XMLoadFloat3(&p2);
+	return p1v - p2v;
 }

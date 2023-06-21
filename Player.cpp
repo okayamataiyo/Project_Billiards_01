@@ -19,9 +19,9 @@ Player::~Player()
 void Player::Update()
 {
 	if (Input::IsKey(DIK_A))
-		direction -= 0.01;
+		direction -= 0.02;
 	if (Input::IsKey(DIK_D))
-		direction += 0.01;
+		direction += 0.02;
 	if (Input::IsKeyDown(DIK_SPACE))
 	{
 		//‚±‚±‚Å‹Ê‚ð‘Å‚Â

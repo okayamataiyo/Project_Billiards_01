@@ -29,13 +29,31 @@ void Ball::Update()
 	if (len < 0.0f) len = 0.0f;
 	velocity = XMVector3Normalize(velocity) * len;
 	//ボールどうしで反射する
-	std::list<Ball*> all = FindGameObjects<Ball>();
-	for (std::list<Ball*>::iterator itr = all.begin(); itr != all.end(); itr++)
-	{
+	std::list<Ball*> all = GetParent()->FindGameObjects<Ball>();
+	for (std::list<Ball*>::iterator itr = all.begin(); itr != all.end(); itr++) {
 		if (*itr == this)continue;
 		XMFLOAT3 next = transform_.position_ + velocity;		//自分の移動後の位置
 		XMFLOAT3 other = (*itr)->GetNextPosition();				//相手の移動語の位置
-//		if (nextとotherが重なったら){}
+		if (Length(next - other) <1.0f * 2.0f ) { //玉の半径2個分
+
+			XMVECTOR n = other - next;
+			n = XMVector3Normalize(n);			//nの長さを1にする
+			XMVECTOR powDot = XMVector3Dot(velocity, n);
+			float pow = XMVectorGetX(powDot);	//押す力の大きさ
+			//nは押す力の向き、powは押す力の大きさ
+			XMVECTOR push = n * pow;			//押すベクトル→相手に渡した力
+			velocity -= push;
+			(*itr)->AddForce(push);
+
+			n = next - other;
+			n = XMVector3Normalize(n);			//nの長さを1にする
+			powDot = XMVector3Dot((*itr)->GetVelocity(), n);
+			pow = XMVectorGetX(powDot);			//押す力の大きさ
+			//nは押す力の向き、powは押す力の大きさ
+			push = n * pow;						//押すベクトル→相手に渡した力
+			(*itr)->AddForce(-push);			//相手から引く
+			AddForce(push);						//自分に加える
+		}
 	
 	}
 	
