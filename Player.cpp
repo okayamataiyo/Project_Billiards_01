@@ -70,10 +70,10 @@ void Player::Update()
 		}
 	}
 	
+	//PowerKageFlug‚ª‚·‚®‚É•Ï‚í‚èAÄ”­“®‚µ‚È‚¢‚½‚ß‚Ìˆ—
 	if (nowPw_ == 0.0f) {
 		PowerKageFlug = 0;
 	}
-
 	if (PowerKageFlug == 0) {
 		nowPw_ = 2;
 	}
