@@ -14,13 +14,26 @@ TestScene::TestScene(GameObject * parent)
 //‰Šú‰»
 void TestScene::Initialize()
 {
+	static const struct {
+		float x, y;
+	} start[] = {
+		{0, 0,},
+		{4, 0,},
+		{2, 2,},
+		{2,-2,},
+		{1, 1,},
+		{1,-1,},
+		{3, 1,},
+		{3,-1,},
+		{2, 0,},
+	};
 	Camera::SetPosition(XMFLOAT3(0, 50, 0));
 	Camera::SetTarget(XMFLOAT3(0, 0, 0));
-	for (int i = 0; i < 15; i++)
+	for (int i = 0; i < 9; i++)
 	{
 		Ball* b = Instantiate<Ball>(this);
 		b->SetNumber(i + 1);
-		b->SetPosition((i - 4) * 1.4, 0, (i - 4) * 1.4);
+		b->SetPosition((start[i].x) * 1.732 + 10, 0, (0, start[i].y) * 1.0);
 	}
 
 	Player* p = Instantiate<Player>(this);
