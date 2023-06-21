@@ -16,6 +16,13 @@ public:
 private:
 	int hModel;
 
+	int nowPw_;
+	int maxPw_;
+
+	int PowerKageFlug = 0;
+
+	float PowerComPenSate = 0;
+
 	Ball* myBall;
 
 	//Œü‚«(Y‰ñ“]‚ÌŠp“x:ƒ‰ƒWƒAƒ“)
