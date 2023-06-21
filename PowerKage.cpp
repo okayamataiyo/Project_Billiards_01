@@ -37,13 +37,13 @@ void PowerKage::Update()
 //•`‰æ
 void PowerKage::Draw()
 {
-	Transform transkage = transform_;
+	/*Transform transkage = transform_;
 	transkage.scale_.x = (float)animPw_ / (float)maxPw_;
 	Image::SetTransform(hPictPowerKage_, transkage);
 	Image::Draw(hPictPowerKage_);
 
 	Image::SetTransform(hPictPowerFlame_, transform_);
-	Image::Draw(hPictPowerFlame_);
+	Image::Draw(hPictPowerFlame_);*/
 
 }
 
