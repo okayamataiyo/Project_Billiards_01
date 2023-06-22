@@ -24,8 +24,8 @@ void PowerKage::Initialize()
 	hPictPowerFlame_ = Image::Load("LifeKageflame.png");
 	assert(hPictPowerFlame_ >= 0);
 
-	transform_.position_.x = -0.9f;
-	transform_.position_.y = 0.85f;
+	transform_.position_.x = -0.5f;
+	transform_.position_.y = -0.65f;
 }
 
 //çXêV
