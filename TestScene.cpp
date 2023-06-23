@@ -33,7 +33,7 @@ void TestScene::Initialize()
 	{
 		Ball* b = Instantiate<Ball>(this);
 		b->SetNumber(i + 1);
-		b->SetPosition((start[i].x) * 1.732 + 10, 0, (0, start[i].y) * 1.0);
+		b->SetPosition((start[i].x) * 1.732 + 10, 0, (0, start[i].y) * 1.2);
 	}
 
 	Player* p = Instantiate<Player>(this);
