@@ -3,9 +3,6 @@
 #include "Ball.h"
 #include "Engine/Model.h"
 #include "Engine/Input.h"
-#include "Engine/VFX.h"
-
-
 
 Ball::Ball(GameObject* parent) : GameObject(parent, "Ball"), hModel(-1)
 {
@@ -58,9 +55,10 @@ void Ball::Update()
 			(*itr)->AddForce(-push);			//‘ŠŽè‚©‚çˆø‚­
 			AddForce(push);						//Ž©•ª‚É‰Á‚¦‚é
 
-			EmitterData data;
-			data.textureFileName = "cloudA.png";
+
 		}
+
+		
 	
 	}
 	
