@@ -1,12 +1,16 @@
+#include <assert.h>
+#include <list>
 #include "Ball.h"
 #include "Engine/Model.h"
 #include "Engine/Input.h"
-#include <assert.h>
-#include <list>
+#include "Engine/VFX.h"
+
+
 
 Ball::Ball(GameObject* parent) : GameObject(parent, "Ball"), hModel(-1)
 {
 	velocity = XMVectorSet(0.0f, 0, 0.0f, 0);
+
 }
 
 Ball::~Ball()
@@ -53,6 +57,9 @@ void Ball::Update()
 			push = n * pow;						//‰Ÿ‚·ƒxƒNƒgƒ‹¨‘ŠŽè‚É“n‚µ‚½—Í
 			(*itr)->AddForce(-push);			//‘ŠŽè‚©‚çˆø‚­
 			AddForce(push);						//Ž©•ª‚É‰Á‚¦‚é
+
+			EmitterData data;
+			data.textureFileName = "cloudA.png";
 		}
 	
 	}

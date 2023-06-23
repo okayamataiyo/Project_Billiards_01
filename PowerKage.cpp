@@ -18,7 +18,7 @@ PowerKage::~PowerKage()
 //‰Šú‰»
 void PowerKage::Initialize()
 {
-	hPictPowerKage_ = Image::Load("LifeKage.png");
+	hPictPowerKage_ = Image::Load("PowerKage.png");
 	assert(hPictPowerKage_ >= 0);
 
 	hPictPowerFlame_ = Image::Load("LifeKageflame.png");
