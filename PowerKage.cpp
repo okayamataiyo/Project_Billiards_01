@@ -4,7 +4,7 @@
 //コンストラクタ
 PowerKage::PowerKage(GameObject* parent)
 	:GameObject(parent, "PowerKage"), hPictPowerKage_(-1), hPictPowerFlame_(-1),
-	maxPw_(180), nowPw_(1)
+	maxPw_(180), nowPw_(1),animPw_(0)
 {
 
 }
