@@ -14,7 +14,7 @@ Player::Player(GameObject* parent)
 	direction = 0.0f;
 	power = 0.1f;
 	hModel = Model::Load("DebugCollision/SphereCollider.fbx");
-	transform_.scale_ = XMFLOAT3(0.2,0.2,0.2);
+	transform_.scale_ = XMFLOAT3(2.0,0.1,0.1);
 	transform_.rotate_.y = 90.0f;
 }
 
@@ -115,10 +115,10 @@ void Player::Draw()
 	//表示座標が求まるので、transform_.position_に代入する
 
 	XMVECTOR base = XMVectorSet(0, 0, 1.2, 0);
-	XMMATRIX yrot = XMMatrixRotationY(direction * 4);	//回転行列を作って
+	XMMATRIX yrot = XMMatrixRotationY(direction * 4);	//Y軸回転行列を作って
 	XMVECTOR v = XMVector3Transform(base, yrot);	//その回転でベクトルの向きを変える
 	transform_.position_ = myBall->GetPosition() + v;
-	transform_.rotate_.y = direction * 100;
+	transform_.rotate_.y = (direction * 230) + 90;
 
 //	hModel = Model::Load("no0.fbx");
 	Model::SetTransform(hModel, transform_);
