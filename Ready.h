@@ -9,6 +9,7 @@ public:
 	void Initialize() override;
 	void Update() override;
 	void Draw() override;
+	bool Finished();	//Ready‚ªI‚í‚Á‚½‚çTrue
 private:
 	int hImage;
 };

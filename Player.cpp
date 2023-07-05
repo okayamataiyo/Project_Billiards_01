@@ -3,6 +3,7 @@
 #include "Ball.h"
 #include "Engine/Input.h"
 #include "Engine/Model.h"
+#include "Ready.h"
 
 /*
 * 
@@ -31,7 +32,10 @@ Player::~Player()
 
 void Player::Update()
 {
-	PowerGauge* pGauge = (PowerGauge*)FindObject("LifeGauge");
+	Ready* pReady = FindGameObject<Ready>();
+	if (pReady != nullptr && !pReady->Finished())
+		return;
+	PowerGauge* pGauge = (PowerGauge*)FindObject("PowerGauge");
 
 
 	//PowerGauge‚Ì—Í‚Ì‘Œ¸
