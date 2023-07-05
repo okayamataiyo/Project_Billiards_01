@@ -16,10 +16,10 @@ public:
 private:
 	int hModel;
 
-	int nowPw_;
-	int maxPw_;
+//	int nowPw_;
+//	int maxPw_;
 
-	int PowerKageFlug = 0;
+	int PowerGaugeFlag = 0;
 
 	float PowerComPenSate = 0;
 

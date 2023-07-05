@@ -116,7 +116,7 @@
     <ClCompile Include="TestScene.cpp">
       <Filter>リソース ファイル\TestScene</Filter>
     </ClCompile>
-    <ClCompile Include="PowerKage.cpp">
+    <ClCompile Include="PowerGauge.cpp">
       <Filter>リソース ファイル\PowerKage</Filter>
     </ClCompile>
   </ItemGroup>
@@ -202,7 +202,7 @@
     <ClInclude Include="TestScene.h">
       <Filter>リソース ファイル\TestScene</Filter>
     </ClInclude>
-    <ClInclude Include="PowerKage.h">
+    <ClInclude Include="PowerGauge.h">
       <Filter>リソース ファイル\PowerKage</Filter>
     </ClInclude>
   </ItemGroup>

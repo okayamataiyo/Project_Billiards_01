@@ -3,7 +3,7 @@
 #include "Engine/Camera.h"
 #include "Engine/Model.h"
 #include "Player.h"
-#include "PowerKage.h"
+#include "PowerGauge.h"
 
 //コンストラクタ
 TestScene::TestScene(GameObject * parent)
@@ -14,21 +14,37 @@ TestScene::TestScene(GameObject * parent)
 //初期化
 void TestScene::Initialize()
 {
+	static const struct {
+		float x, y;
+	} start[] = {
+		{0, 0,},
+		{4, 0,},
+		{2, 2,},
+		{2,-2,},
+		{1, 1,},
+		{1,-1,},
+		{3, 1,},
+		{3,-1,},
+		{2, 0,},
+	};
 	Camera::SetPosition(XMFLOAT3(0, 50, 0));
 	Camera::SetTarget(XMFLOAT3(0, 0, 0));
 	for (int i = 0; i < 9; i++)
 	{
 		Ball* b = Instantiate<Ball>(this);
 		b->SetNumber(i + 1);
-		b->SetPosition((i - 4) * 1.4, 0, (i - 4) * 1.4);
+		b->SetPosition((start[i].x) * 1.732 + 10, 0, (0, start[i].y) * 1.2);
 	}
 
 	Player* p = Instantiate<Player>(this);
 	Ball* b = Instantiate<Ball>(this);
-	Instantiate<PowerKage>(this);
 	b->SetPosition(-10, 0, 10);
 	b->SetNumber(0); //白玉
 	p->SetMyBall(b); 
+
+
+	PowerGauge* g = Instantiate<PowerGauge>(this);
+	g->SetPosition(-0.8, -0.5);
 }
 
 //更新
@@ -57,6 +73,8 @@ void TestScene::Update()
 			}
 		}
 	}
+
+
 }
 
 //描画
