@@ -86,10 +86,11 @@ void Ready::Update()
 			break;
 		case A_SLIDE_OUT:
 			canMove = true;
-			startX = transform_.position_.x;
+			startX = transform_.position_.x;	//今の場所からparamに向かって移動
 			endX = tbl[seq_line].param;
 			totalTime = tbl[seq_line + 1].time - seq_time;
 			currentTime = 0.0f;
+			break;
 		}
 
 		//その行を実行する
@@ -115,3 +116,6 @@ void Ready::Draw()
 	Image::SetTransform(hImage, transform_);
 	Image::Draw(hImage);
 }
+
+//イージング(0.0~1.0を補完する曲線)
+//スプライン(4つ以上の点を滑らかに通る曲線補完)

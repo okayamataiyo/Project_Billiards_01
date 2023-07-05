@@ -35,6 +35,7 @@ void Player::Update()
 	Ready* pReady = FindGameObject<Ready>();
 	if (pReady != nullptr && !pReady->Finished())
 		return;
+
 	PowerGauge* pGauge = (PowerGauge*)FindObject("PowerGauge");
 
 
