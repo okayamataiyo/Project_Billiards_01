@@ -31,8 +31,6 @@ Player::~Player()
 
 void Player::Update()
 {
-<<<<<<< HEAD
-=======
 	PowerGauge* pGauge = (PowerGauge*)FindObject("LifeGauge");
 
 
@@ -64,15 +62,10 @@ void Player::Update()
 	if (nowPw_ >= maxPw_ - 20) {
 		PowerComPenSate = nowPw_ * 0.05;
 	}*/
->>>>>>> master
 
 	if (Input::IsKey(DIK_A))
 		direction -= XMConvertToRadians(ROT_SPEED) / 60.0f;
 	if (Input::IsKey(DIK_D))
-<<<<<<< HEAD
-		direction += 0.02;
-	if (Input::IsKeyDown(DIK_SPACE)){
-=======
 		direction += XMConvertToRadians(ROT_SPEED) / 60.0f;
 	if (PowerGaugeFlag == 0){
 		if (Input::IsKeyDown(DIK_SPACE)){
@@ -82,16 +75,11 @@ void Player::Update()
 	}
 	else if (PowerGaugeFlag == 1 || PowerGaugeFlag == 2) {
 		if (Input::IsKeyDown(DIK_SPACE)){
->>>>>>> master
 			//ここで玉を打つ
 			XMVECTOR base = XMVectorSet(0, 0, power, 0);	//回転してない時に移動するベクトル
 			XMMATRIX yrot = XMMatrixRotationY(direction * 4);	//回転行列を作って
 			XMVECTOR v = XMVector3Transform(base, yrot);	//その回転でベクトルの向きを変える
 			myBall->AddForce(v);	//これが回転後の移動ベクトル
-<<<<<<< HEAD
-	}
-	
-=======
 		}
 	}
 	
@@ -103,7 +91,8 @@ void Player::Update()
 		nowPw_ = 2;
 	}*/
 
->>>>>>> master
+	}
+	
 	if (Input::IsKeyDown(DIK_S))
 	{
 		//ここで玉を打つ
