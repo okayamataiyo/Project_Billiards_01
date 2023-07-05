@@ -22,7 +22,7 @@ void PowerGauge::Initialize()
 	hPictPowerGauge_ = Image::Load("LifeGauge.png");
 	assert(hPictPowerGauge_ >= 0);
 
-	ImageWidth = 512;
+	ImageWidth = GetWidth();
 	ImageHeight = 64;
 
 	hPictPowerFrame_ = Image::Load("LifeGaugeflame.png");

@@ -33,7 +33,7 @@
     <Filter Include="リソース ファイル\TestScene">
       <UniqueIdentifier>{875a8747-1f75-4473-831a-39ada0767a71}</UniqueIdentifier>
     </Filter>
-    <Filter Include="リソース ファイル\PowerKage">
+    <Filter Include="リソース ファイル\PowerGauge">
       <UniqueIdentifier>{678cf8c2-9a12-4852-a8e3-05fe057c928e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -117,10 +117,9 @@
       <Filter>リソース ファイル\TestScene</Filter>
     </ClCompile>
     <ClCompile Include="PowerGauge.cpp">
-      <Filter>リソース ファイル\PowerKage</Filter>
+      <Filter>リソース ファイル\PowerGauge</Filter>
     </ClCompile>
     <ClCompile Include="Ready.cpp" />
-    <ClCompile Include="Easing.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -205,10 +204,9 @@
       <Filter>リソース ファイル\TestScene</Filter>
     </ClInclude>
     <ClInclude Include="PowerGauge.h">
-      <Filter>リソース ファイル\PowerKage</Filter>
+      <Filter>リソース ファイル\PowerGauge</Filter>
     </ClInclude>
     <ClInclude Include="Ready.h" />
-    <ClInclude Include="Easing.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">
