@@ -3,7 +3,7 @@
 #include "Engine/Camera.h"
 #include "Engine/Model.h"
 #include "Player.h"
-#include "PowerKage.h"
+#include "PowerGauge.h"
 
 //コンストラクタ
 TestScene::TestScene(GameObject * parent)
@@ -38,7 +38,7 @@ void TestScene::Initialize()
 
 	Player* p = Instantiate<Player>(this);
 	Ball* b = Instantiate<Ball>(this);
-	Instantiate<PowerKage>(this);
+	Instantiate<PowerGauge>(this);
 	b->SetPosition(-10, 0, 10);
 	b->SetNumber(0); //白玉
 	p->SetMyBall(b); 

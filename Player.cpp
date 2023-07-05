@@ -1,5 +1,5 @@
 #include "Player.h"
-#include "PowerKage.h"
+#include "PowerGauge.h"
 #include "Ball.h"
 #include "Engine/Input.h"
 #include "Engine/Model.h"
@@ -9,8 +9,12 @@
 * パワーケージを作成して、スペースボタンを押したら、カービィのかちわりメガトンパンチのケージのような操作にする
 */
 
+namespace {
+	static const float ROT_SPEED = 90.0f;	//1秒間で移動する角度(度)
+}
+
 Player::Player(GameObject* parent)
-	:maxPw_(180),nowPw_(2)
+//	:maxPw_(180),nowPw_(2)
 {
 	direction = 0.0f;
 	power = 0.1f;
@@ -26,19 +30,19 @@ Player::~Player()
 
 void Player::Update()
 {
-	//PowerKageの力の増減
-	if (PowerKageFlug == 1) {
+	//PowerGaugeの力の増減
+	if (PowerGaugeFlag == 1) {
 		nowPw_++;
 	}
 	if (nowPw_ == maxPw_) {
-		PowerKageFlug = 2;
+		PowerGaugeFlag = 2;
 
 	}
-	if (PowerKageFlug == 2) {
+	if (PowerGaugeFlag == 2) {
 		nowPw_--;
 	}
 	if (nowPw_ <= maxPw_ - maxPw_ + 1) {
-		PowerKageFlug = 1;
+		PowerGaugeFlag = 1;
 	}
 
 	//移動距離にnowPw_の補正をかける
@@ -50,16 +54,16 @@ void Player::Update()
 	}
 
 	if (Input::IsKey(DIK_A))
-		direction -= 0.02;
+		direction -= XMConvertToRadians(ROT_SPEED) / 60.0f;
 	if (Input::IsKey(DIK_D))
-		direction += 0.02;
-	if (PowerKageFlug == 0){
+		direction += XMConvertToRadians(ROT_SPEED) / 60.0f;
+	if (PowerGaugeFlag == 0){
 		if (Input::IsKeyDown(DIK_SPACE)){
 
-			PowerKageFlug = 1;
+			PowerGaugeFlag = 1;
 		}
 	}
-	else if (PowerKageFlug == 1 || PowerKageFlug == 2) {
+	else if (PowerGaugeFlag == 1 || PowerGaugeFlag == 2) {
 		if (Input::IsKeyDown(DIK_SPACE)){
 			//ここで玉を打つ
 			XMVECTOR base = XMVectorSet(0, 0, power * PowerComPenSate, 0);	//回転してない時に移動するベクトル
@@ -71,11 +75,11 @@ void Player::Update()
 		}
 	}
 	
-	//PowerKageFlugがすぐに変わり、再発動しないための処理
+	//PowerGaugeFlagがすぐに変わり、再発動しないための処理
 	if (nowPw_ == 0.0f) {
-		PowerKageFlug = 0;
+		PowerGaugeFlag = 0;
 	}
-	if (PowerKageFlug == 0) {
+	if (PowerGaugeFlag == 0) {
 		nowPw_ = 2;
 	}
 
@@ -104,8 +108,17 @@ void Player::Update()
 		myBall->AddForce(v);
 	}
 
-	PowerKage* pPowerKage = (PowerKage*)FindObject("PowerKage");
-	pPowerKage->SetPw(nowPw_, maxPw_);
+	PowerGauge* pPowerGauge = (PowerGauge*)FindObject("PowerGauge");
+	pPowerGauge->SetPw(nowPw_, maxPw_);
+
+	std::list<Ball*> all = GetParent()->FindGameObjects<Ball>();
+	bool flag = true;
+
+	//	for (auto itr = all.begin(); itr != all.end(); itr++) {
+	for (Ball* b : all)
+		//		if (!(*itr)->IsStopped()) {
+		flag = false;
+	return;	//break;
 }
 
 void Player::Draw()
