@@ -119,6 +119,8 @@
     <ClCompile Include="PowerGauge.cpp">
       <Filter>リソース ファイル\PowerKage</Filter>
     </ClCompile>
+    <ClCompile Include="Ready.cpp" />
+    <ClCompile Include="Easing.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -205,6 +207,8 @@
     <ClInclude Include="PowerGauge.h">
       <Filter>リソース ファイル\PowerKage</Filter>
     </ClInclude>
+    <ClInclude Include="Ready.h" />
+    <ClInclude Include="Easing.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">

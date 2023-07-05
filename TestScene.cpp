@@ -2,8 +2,10 @@
 #include "ball.h"
 #include "Engine/Camera.h"
 #include "Engine/Model.h"
+#include "Engine/Image.h"
 #include "Player.h"
 #include "PowerGauge.h"
+#include "Ready.h"
 
 //コンストラクタ
 TestScene::TestScene(GameObject * parent)
@@ -45,6 +47,7 @@ void TestScene::Initialize()
 
 	PowerGauge* g = Instantiate<PowerGauge>(this);
 	g->SetPosition(-0.8, -0.5);
+	Ready* pReady = Instantiate<Ready>(this);
 }
 
 //更新
@@ -80,7 +83,6 @@ void TestScene::Update()
 //描画
 void TestScene::Draw()
 {
-
 }
 
 //開放
