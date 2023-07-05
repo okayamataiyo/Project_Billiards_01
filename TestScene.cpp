@@ -38,10 +38,13 @@ void TestScene::Initialize()
 
 	Player* p = Instantiate<Player>(this);
 	Ball* b = Instantiate<Ball>(this);
-	Instantiate<PowerGauge>(this);
 	b->SetPosition(-10, 0, 10);
 	b->SetNumber(0); //”’‹Ê
 	p->SetMyBall(b); 
+
+
+	PowerGauge* g = Instantiate<PowerGauge>(this);
+	g->SetPosition(-0.8, -0.5);
 }
 
 //XV

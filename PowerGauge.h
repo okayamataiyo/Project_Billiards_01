@@ -6,10 +6,13 @@
 //表示の大きさによって、表示サイズを変えれるように作る。
 //表示する位置は、外から(使う側)から指定出来るようにする。
 //加算する関数と、減産する関数と、現在の値を取得する関数を用意する。
+
+
+
 class PowerGauge : public GameObject
 {
 	int hPictPowerGauge_;	//画像番号(ゲージの中身)
-	int hPictPowerFlame_;	//画像番号(ゲージの外枠)
+	int hPictPowerFrame_;	//画像番号(ゲージの外枠)
 	float nowPw_;		//今の値
 	const float maxPw_ = 1.0f;	//最大値
 	float animPw_;		//dispHp	表示用の値
@@ -18,6 +21,9 @@ class PowerGauge : public GameObject
 
 
 public:
+	static constexpr float MIN = 0.0f;
+	static constexpr float MAX = 1.0f;
+
 	//コンストラクタ
 	PowerGauge(GameObject* parent);
 
@@ -42,5 +48,17 @@ public:
 //		maxPw_ = maxPw;
 //		animPw_ = (animPw_ * 9 + nowPw_) / 10;
 	}
+
+	void SetPosition(float x, float y);
+
+	/// <summary>
+	/// 値を加減算する
+	/// </summary>
+	/// <param name="v"></param>
+	void AddValue(float v);
+
+	void SetValue(float v);
+
+	float GetValue();
 };
 

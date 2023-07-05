@@ -11,6 +11,7 @@
 
 namespace {
 	static const float ROT_SPEED = 90.0f;	//1秒間で移動する角度(度)
+	const float GAUGE_TIME = 0.5f;	//0から満タンになるための時間
 }
 
 Player::Player(GameObject* parent)
@@ -30,28 +31,37 @@ Player::~Player()
 
 void Player::Update()
 {
+	PowerGauge* pGauge = (PowerGauge*)FindObject("LifeGauge");
+
+
 	//PowerGaugeの力の増減
 	if (PowerGaugeFlag == 1) {
-		nowPw_++;
+		pGauge->AddValue(PowerGauge::MAX/GAUGE_TIME/60.0f);
+		if (pGauge->GetValue() >= PowerGauge::MIN) {
+			PowerGaugeFlag = 2;
+		}
 	}
-	if (nowPw_ == maxPw_) {
+	/*if (nowPw_ == maxPw_) {
 		PowerGaugeFlag = 2;
 
-	}
+	}*/
 	if (PowerGaugeFlag == 2) {
-		nowPw_--;
+		pGauge->AddValue(PowerGauge::MAX/GAUGE_TIME / 60.0f);
+		if (pGauge->GetValue() <= PowerGauge::MAX) {
+			PowerGaugeFlag = 1;
+		}
 	}
-	if (nowPw_ <= maxPw_ - maxPw_ + 1) {
+	/*if (nowPw_ <= maxPw_ - maxPw_ + 1) {
 		PowerGaugeFlag = 1;
-	}
+	}*/
 
 	//移動距離にnowPw_の補正をかける
-	if (nowPw_ <= maxPw_ - 20) {
+	/*if (nowPw_ <= maxPw_ - 20) {
 		PowerComPenSate = nowPw_ * 0.01;
 	}
 	if (nowPw_ >= maxPw_ - 20) {
 		PowerComPenSate = nowPw_ * 0.05;
-	}
+	}*/
 
 	if (Input::IsKey(DIK_A))
 		direction -= XMConvertToRadians(ROT_SPEED) / 60.0f;
@@ -70,18 +80,16 @@ void Player::Update()
 			XMMATRIX yrot = XMMatrixRotationY(direction * 4);	//回転行列を作って
 			XMVECTOR v = XMVector3Transform(base, yrot);	//その回転でベクトルの向きを変える
 			myBall->AddForce(v);	//これが回転後の移動ベクトル
-
-			nowPw_ = 0;
 		}
 	}
 	
 	//PowerGaugeFlagがすぐに変わり、再発動しないための処理
-	if (nowPw_ == 0.0f) {
+	/*if (nowPw_ == 0.0f) {
 		PowerGaugeFlag = 0;
 	}
 	if (PowerGaugeFlag == 0) {
 		nowPw_ = 2;
-	}
+	}*/
 
 	if (Input::IsKeyDown(DIK_S))
 	{
@@ -108,8 +116,8 @@ void Player::Update()
 		myBall->AddForce(v);
 	}
 
-	PowerGauge* pPowerGauge = (PowerGauge*)FindObject("PowerGauge");
-	pPowerGauge->SetPw(nowPw_, maxPw_);
+//	PowerGauge* pPowerGauge = (PowerGauge*)FindObject("PowerGauge");
+//	pPowerGauge->SetPw(nowPw_, maxPw_);
 
 	std::list<Ball*> all = GetParent()->FindGameObjects<Ball>();
 	bool flag = true;
