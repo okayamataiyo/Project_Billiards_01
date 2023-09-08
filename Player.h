@@ -1,5 +1,5 @@
-#include "Engine/GameObject.h"
 #pragma once
+#include "Engine/GameObject.h"
 
 class Ball;
 
@@ -15,7 +15,6 @@ public:
 	void SetMyBall(Ball* ball) { myBall = ball; }
 private:
 	int hModel;
-
 //	int nowPw_;
 //	int maxPw_;
 

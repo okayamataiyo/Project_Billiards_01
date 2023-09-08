@@ -73,10 +73,11 @@ void PowerGauge::SetPosition(float x, float y)
 void PowerGauge::AddValue(float v)
 {
 	nowPw_ += v;
-	if (nowPw_ < 0.0f)
-		nowPw_ = 0.0f;
+	if (nowPw_ < minPw_)
+		nowPw_ = minPw_;
 	else if (nowPw_ > maxPw_)
 		nowPw_ = maxPw_;
+
 }
 
 void PowerGauge::SetValue(float v)

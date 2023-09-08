@@ -43,6 +43,7 @@ Ready::Ready(GameObject* parent)
 	seq_line = -1;
 	seq_time = 0.0f;
 	canMove = false;
+	hImage = 0;
 }
 
 Ready::~Ready()

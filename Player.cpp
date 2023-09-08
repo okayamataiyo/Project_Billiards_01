@@ -1,8 +1,8 @@
+#include "Engine/Input.h"
+#include "Engine/Model.h"
 #include "Player.h"
 #include "PowerGauge.h"
 #include "Ball.h"
-#include "Engine/Input.h"
-#include "Engine/Model.h"
 #include "Ready.h"
 
 /*
@@ -12,7 +12,7 @@
 
 namespace {
 	static const float ROT_SPEED = 90.0f;	//1秒間で移動する角度(度)
-	const float GAUGE_TIME = 0.5f;	//0から満タンになるための時間
+	const float GAUGE_TIME = 1.0f;	//0から満タンになるための時間
 }
 
 Player::Player(GameObject* parent)
@@ -42,7 +42,7 @@ void Player::Update()
 	//PowerGaugeの力の増減
 	if (PowerGaugeFlag == 1) {
 		pGauge->AddValue(PowerGauge::MAX/GAUGE_TIME/60.0f);
-		if (pGauge->GetValue() >= PowerGauge::MIN) {
+		if (pGauge->GetValue() >= PowerGauge::MAX) {
 			PowerGaugeFlag = 2;
 		}
 	}
@@ -51,8 +51,8 @@ void Player::Update()
 
 	}*/
 	if (PowerGaugeFlag == 2) {
-		pGauge->AddValue(PowerGauge::MAX/GAUGE_TIME / 60.0f);
-		if (pGauge->GetValue() <= PowerGauge::MAX) {
+		pGauge->AddValue(PowerGauge::MAX/GAUGE_TIME/-60.0f);
+		if (pGauge->GetValue() <= PowerGauge::MIN) {
 			PowerGaugeFlag = 1;
 		}
 	}
@@ -81,10 +81,13 @@ void Player::Update()
 	else if (PowerGaugeFlag == 1 || PowerGaugeFlag == 2) {
 		if (Input::IsKeyDown(DIK_SPACE)){
 			//ここで玉を打つ
-			XMVECTOR base = XMVectorSet(0, 0, power * PowerComPenSate, 0);	//回転してない時に移動するベクトル
+//			XMVECTOR base = XMVectorSet(0, 0, power * PowerComPenSate, 0);	//回転してない時に移動するベクトル
+			XMVECTOR base = XMVectorSet(0, 0, power * pGauge->GetValue(), 0);	//回転してない時に移動するベクトル
 			XMMATRIX yrot = XMMatrixRotationY(direction * 4);	//回転行列を作って
 			XMVECTOR v = XMVector3Transform(base, yrot);	//その回転でベクトルの向きを変える
 			myBall->AddForce(v);	//これが回転後の移動ベクトル
+			pGauge->SetValue(0);
+			PowerGaugeFlag = 0;
 		}
 	}
 	

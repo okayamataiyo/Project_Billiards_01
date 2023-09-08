@@ -15,6 +15,7 @@ class PowerGauge : public GameObject
 	int hPictPowerFrame_;	//画像番号(ゲージの外枠)
 	float nowPw_;		//今の値
 	const float maxPw_ = 1.0f;	//最大値
+	const float minPw_ = 0.0f;	//最小値
 	float animPw_;		//dispHp	表示用の値
 	int ImageWidth;		//ゲージ画像の幅
 	int ImageHeight;	//ゲージ画像の高さ
