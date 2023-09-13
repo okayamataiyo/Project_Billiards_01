@@ -39,6 +39,9 @@
     <Filter Include="リソース ファイル\TitleScene">
       <UniqueIdentifier>{3472717f-8bd1-4ff8-ba2e-c58e53ab136c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="リソース ファイル\Button">
+      <UniqueIdentifier>{e36b975b-af6a-45ba-9e66-fb4439a6d2d5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\BoxCollider.cpp">
@@ -125,6 +128,9 @@
     <ClCompile Include="Ready.cpp" />
     <ClCompile Include="Title.cpp">
       <Filter>リソース ファイル\TitleScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>リソース ファイル\Button</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -215,6 +221,9 @@
     <ClInclude Include="Ready.h" />
     <ClInclude Include="Title.h">
       <Filter>リソース ファイル\TitleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>リソース ファイル\Button</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,14 +1,23 @@
 #pragma once
 #include "Engine/GameObject.h"
 
-namespace {
-	const int PictNum_ = { 2 };
-}
+class Button;
 
 //タイトルシーンを管理するクラス
 class Title : public GameObject
 {
-	int hPict_[PictNum_];	//画像番号
+	Button* start;
+	Button* back;
+	enum SELECT {
+		NONE = -1,
+		START = 0,
+		BACK,
+	};
+	SELECT selected;
+	//int hPict_[PictNum_];	//画像番号
+	int PushFlag_;			//画像を押した時に切り替わるフラグ
+	Transform giveTrans;
+	Transform backTrans;
 public:
 	//コンストラクタ
 	Title(GameObject* parent);
@@ -24,5 +33,7 @@ public:
 
 	//解放
 	void Release() override;
+
+	void SetPosition(int x, int y);
 };
 

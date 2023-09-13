@@ -1,8 +1,9 @@
 #include <assert.h>
 #include <list>
-#include "Ball.h"
 #include "Engine/Model.h"
 #include "Engine/Input.h"
+#include "Ball.h"
+
 
 Ball::Ball(GameObject* parent) : GameObject(parent, "Ball"), hModel(-1)
 {
