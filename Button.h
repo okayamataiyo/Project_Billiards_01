@@ -37,6 +37,18 @@ public:
 	/// <param name="toY">ˆÚ“®Œã‚ÌÀ•WY</param>
 	/// <param name="seconds">ˆÚ“®ŠÔ(•b)</param>
 	void SetMovePosition(int toX, int toY, float seconds);
+
+	/// <summary>
+	/// “®‚¢‚Ä‚¢‚é‚È‚çtrue
+	/// </summary>
+	/// <returns></returns>
+	bool IsMoving();
+
+	/// <summary>
+	/// ‹­§“I‚ÉˆÚ“®‚ğI—¹‚³‚¹‚é
+	/// </summary>
+	void ForceMoveEnd();
+
 private:
 	int hImage;		//’Êí‰æ‘œ”Ô†
 	int pushed;		//‰Ÿ‚³‚ê‚½‰æ‘œ

@@ -1,5 +1,3 @@
-#include <cmath>
-#include <vector>
 #include "Engine/Image.h"
 #include "Engine/SceneManager.h"
 #include "Engine/Input.h"
@@ -62,12 +60,12 @@ void Title::Initialize()
 
 	start = Instantiate<Button>(this);
 	start->SetImage("FoodButtonGive", "FoodButtonGiveDisable");
-	start->SetPosition(640, 360 - 100);
-	start->SetMovePosition(640, 360 - 100, 1.0f);
+	start->SetPosition(1920, 360 - 100);
+	start->SetMovePosition(640, 360 - 100, 2.0f);
 	back = Instantiate<Button>(this);
 	back->SetImage("CommonButtonBack", "CommonButtonBackDisable");
-	back->SetPosition(640, 360 + 100);
-	back->SetMovePosition(640, 360 + 100, 1.0f);
+	back->SetPosition(1920, 360 + 100);
+	back->SetMovePosition(640, 360 + 100, 2.0f);
 
 	//assert(hPict_ >= 0);
 	/*
@@ -77,10 +75,6 @@ void Title::Initialize()
 	currentTime = 0.0f;
 	transY = 0.5f;
 	*/
-}
-
-float easeInOutSine(float x) {
-	return -(std::cos(3.14 * x) - 1) / 2;
 }
 
 //更新
@@ -126,9 +120,22 @@ void Title::Update()
 
 	//先生のコード
 	if (Input::IsMouseButtonDown(0)) {
-		if (selected == START) {
-			SceneManager* scene = dynamic_cast<SceneManager*>(FindObject("SceneManager"));
-			scene->ChangeScene(SCENE_ID_TEST);
+		//動いているなら強制ストップ
+		bool moving = false;
+		if (start->IsMoving()) {
+			start->ForceMoveEnd();
+			moving = true;
+		}
+		if (back->IsMoving()) {
+			back->ForceMoveEnd();
+			moving = true;
+		}
+		//動いてなければ↓を実行
+		if (!moving) {
+			if (selected == START) {
+				SceneManager* scene = dynamic_cast<SceneManager*>(FindObject("SceneManager"));
+				scene->ChangeScene(SCENE_ID_TEST);
+			}
 		}
 	}
 	XMFLOAT3 pos = Input::GetMousePosition();
