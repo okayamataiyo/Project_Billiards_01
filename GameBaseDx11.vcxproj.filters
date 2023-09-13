@@ -36,6 +36,9 @@
     <Filter Include="リソース ファイル\PowerGauge">
       <UniqueIdentifier>{678cf8c2-9a12-4852-a8e3-05fe057c928e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="リソース ファイル\TitleScene">
+      <UniqueIdentifier>{3472717f-8bd1-4ff8-ba2e-c58e53ab136c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\BoxCollider.cpp">
@@ -120,6 +123,9 @@
       <Filter>リソース ファイル\PowerGauge</Filter>
     </ClCompile>
     <ClCompile Include="Ready.cpp" />
+    <ClCompile Include="Title.cpp">
+      <Filter>リソース ファイル\TitleScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -207,6 +213,9 @@
       <Filter>リソース ファイル\PowerGauge</Filter>
     </ClInclude>
     <ClInclude Include="Ready.h" />
+    <ClInclude Include="Title.h">
+      <Filter>リソース ファイル\TitleScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">

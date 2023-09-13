@@ -19,7 +19,7 @@ Player::Player(GameObject* parent)
 //	:maxPw_(180),nowPw_(2)
 {
 	direction = 0.0f;
-	power = 0.1f;
+	power = 0.5f;
 	hModel = Model::Load("DebugCollision/SphereCollider.fbx");
 	transform_.scale_ = XMFLOAT3(2.0,0.1,0.1);
 	transform_.rotate_.y = 90.0f;
